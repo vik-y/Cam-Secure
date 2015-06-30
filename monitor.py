@@ -1,6 +1,18 @@
 import subprocess
 import datetime, time 
+import pynotify
 
+''' Utility Functions start here '''
+
+def desktop_notify(title, message):
+	'''
+	This function can be used to send notification to the user regarding
+	anything 
+	'''
+	pynotify.init("Test")
+	notice = pynotify.Notification(title, message)
+	notice.show()
+    
 def runCommand(comm):
 	'''
 	Using the subprocess library this runs the command passed 
@@ -8,9 +20,10 @@ def runCommand(comm):
 	proc = subprocess.Popen(comm.split(), stdout=subprocess.PIPE)
 	outputstr = ''
 	for line in proc.stdout.readlines():
-		    outputstr+=line.rstrip()+"\n"
-			
-	return outputstr[:-1]
+		    outputstr+=line.rstrip()+"\n"	    
+	return outputstr[:-1]		
+    
+''' Utility Functions end here '''
 
 
 def checkWebCam():
@@ -48,15 +61,7 @@ def killAllCams():
 			print killProcess(pid)
 
 
-def identifyProcess(pid):
-	'''
-	Given a pid, this process finds out the binary which is executing that process
-	so that we can narrow down and identify the processes which are using that resource
-	ps -p pid -> Might be useful here 
-	ps -a pid -> Might also be useful here 
-	Find out more commands so that you can use adavanced analytics
-	'''
-	return "a list of the binary locations"
+
 
 #killAllCams() 
 	
