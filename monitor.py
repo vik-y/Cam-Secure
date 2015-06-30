@@ -39,6 +39,15 @@ def checkWebCam():
 		print status
 		return status.split('\n')
 
+def identifyProcess(pid):
+	'''
+	Given a pid, this process finds out the binary which is executing that process
+	so that we can narrow down and identify the processes which are using that resource
+	ps -p pid -> Might be useful here 
+	ps -a pid -> Might also be useful here 
+	Find out more commands so that you can use adavanced analytics
+	'''
+	return "a list of the binary locations"
 
 def killProcess(pid):
 	'''
@@ -59,6 +68,7 @@ def killAllCams():
 		print "Started to kill processes"
 		for pid in status:
 			print killProcess(pid)
+
 
 
 
